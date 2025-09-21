@@ -1,6 +1,7 @@
 # school.py
 
 # Define the Person class (Parent class)
+ 
 class Person:
     # Constructor method to initialize the Person object with name, age, and country
     def __init__(self, name: str, age: int, country: str):
@@ -12,6 +13,13 @@ class Person:
     def __str__(self) -> str:
         # Must RETURN (not print) in this exact format
         return f"{self.name} is {self.age} years old and is from {self.country}."
+
+    # Method to introduce the person (explicit requirement of the assignment)
+    def introduce_yourself(self) -> str:
+        # Returns the same information as __str__, but as a named method
+        return f"{self.name} is {self.age} years old and is from {self.country}."
+
+
 
 
 # Define the Student class (Child class of Person)
