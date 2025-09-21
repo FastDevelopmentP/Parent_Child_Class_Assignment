@@ -1,62 +1,59 @@
+# school.py
+
+# Define the Person class (Parent class)
 class Person:
     # Constructor method to initialize the Person object with name, age, and country
     def __init__(self, name: str, age: int, country: str):
-        self.name = name           # Assign the provided name to the instance variable
-        self.age = age             # Assign the provided age to the instance variable
-        self.country = country    # Assign the provided country to the instance variable
+        self.name = name            # Assign the provided name to the instance variable
+        self.age = age              # Assign the provided age to the instance variable
+        self.country = country      # Assign the provided country to the instance variable
 
     # Method to return a string representation of the Person object
     def __str__(self) -> str:
-        # Step 8: must RETURN (not print) this exact format
-        return f"{self.name} is {self.age} years old and is from {self.country}."  # Format and return the string
+        # Must RETURN (not print) in this exact format
+        return f"{self.name} is {self.age} years old and is from {self.country}."
 
-    # Method to check if the person is eligible to vote (18 or older)
-    def can_vote(self) -> bool:
-        # Step 9: True if 18 or older, else False
-        return self.age >= 18      # Return True if age is 18 or more, otherwise False
-    
-# Step 10: Example usage
-# Inputs
-person_1 = Person("Pete", 20, "230")
-person_2 = Person("Emma", 17, "109")
 
-# Outputs
-print(person_1) # "Pete is 20 years old and is from USA."
-print(person_1.can_vote()) # True
-print(person_2) # "Emma is 17 years old and is from Brazil."
-print(person_2.can_vote()) # False
-
+# Define the Student class (Child class of Person)
 class Student(Person):
-    # Define the Student class that inherits from Person
+    # Constructor method to initialize the Student object with inherited and new attributes
     def __init__(self, name: str, age: int, country: str, major: str, gpa: float):
-        #call the init method in the child class
-        Student.__init__(self, name, age, country)
-        #set the student specific attributes of major and gpa
+        # Call the constructor of the parent Person class
+        super().__init__(name, age, country)
+        # Set the Student-specific attributes
         self.major = major
         self.gpa = gpa
 
-    # method to return a string representation of the Student object
+    # Method to return a string describing the student's study details
     def study(self) -> str:
-        return f"{self.name} is studying {self.major}.- with a gpa of: {self.gpa} -age: {self.age} -weight: {self.weight} _can vote: {self.can_vote()}"
-    
+        # Must return exactly this format per assignment instructions
+        return f"{self.name} is studying {self.major} with a current GPA of {self.gpa}."
+
+
+# Define the Staff class (Child class of Person)
 class Staff(Person):
-    # Define the Staff class that inherits from Person
+    # Constructor method to initialize the Staff object with inherited and new attributes
     def __init__(self, name: str, age: int, country: str, position: str, department: str):
-        #call the init method in the child class
-        Staff.__init__(self, name, age, country)
-        #set the staff specific attributes of position and department
+        # Call the constructor of the parent Person class
+        super().__init__(name, age, country)
+        # Set the Staff-specific attributes
         self.position = position
         self.department = department
 
-    # method to return a string representation of the Staff object
+    # Method to return a string describing the staff member's work details
     def work(self) -> str:
-        return f"{self.name} is working as a {self.position} in the {self.department} department."
-    
-# Step 11: Example usage of Student and Staff classes
-# Inputs
-student_1 = Student("Alice", 22, "USA", "Computer Science", 3.8)
-staff_1 = Staff("Bob", 45, "Canada", "Professor", "Mathematics")
+        # Must return exactly this format per assignment instructions
+        return f"{self.name} works as a {self.position} in the {self.department} department."
 
-# Outputs
-print(student_1.study()) # "Alice is studying Computer Science with a GPA of 3.8."
-print(staff_1.work())    # "Bob is working as a Professor in the Mathematics department."
+
+# Example usage of the classes (only runs if this file is executed directly, not when imported)
+if __name__ == "__main__":
+    # Step 10: Create example Person, Student, and Staff objects
+    person_1 = Person("Manny", 33, "USA")                     # Example Person object
+    student_1 = Student("Tammy", 19, "Vietnam", "Computer Science", 3.54)  # Example Student object
+    staff_1 = Staff("Brittney", 36, "Canada", "Neuroscientist", "Biology") # Example Staff object
+
+    # Step 11: Print outputs to demonstrate required methods
+    print(person_1)                # Expected: "Manny is 33 years old and is from USA."
+    print(student_1.study())       # Expected: "Tammy is studying Computer Science with a current GPA of 3.54."
+    print(staff_1.work())          # Expected: "Brittney works as a Neuroscientist in the Biology department."
