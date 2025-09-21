@@ -1,9 +1,9 @@
 class Person:
     # Constructor method to initialize the Person object with name, age, and country
-    def __init__(self, name: str, age: int, weight: str):
+    def __init__(self, name: str, age: int, country: str):
         self.name = name           # Assign the provided name to the instance variable
         self.age = age             # Assign the provided age to the instance variable
-        self.weight = weight     # Assign the provided country to the instance variable
+        self.country = country    # Assign the provided country to the instance variable
 
     # Method to return a string representation of the Person object
     def __str__(self) -> str:
@@ -28,15 +28,26 @@ print(person_2.can_vote()) # False
 
 class Student(Person):
     # Define the Student class that inherits from Person
-    def __init__(self, name: str, age: int, country: str,):
+    def __init__(self, name: str, age: int, country: str, major: str, gpa: float):
         #call the init method in the child class
         Student.__init__(self, name, age, country)
         #set the student specific attributes of major and gpa
         self.major = major
         self.gpa = gpa
 
-    def study(self)
-        return f"{self.name} is studying {self.major}.- gpa: {self.gpa} -age: {self.age} -weight: {self.weight} _can vote: {self.can_vote()}"
+    # method to return a string representation of the Student object
+    def study(self) -> str:
+        return f"{self.name} is studying {self.major}.- with a gpa of: {self.gpa} -age: {self.age} -weight: {self.weight} _can vote: {self.can_vote()}"
+    
 class Staff(Person):
-    # Delete pass and add your code here
-    pass
+    # Define the Staff class that inherits from Person
+    def __init__(self, name: str, age: int, country: str, position: str, deparment: str):
+        #call the init method in the child class
+        Staff.__init__(self, name, age, country)
+        #set the staff specific attributes of position and department
+        self.position = position
+        self.department = department
+
+    # method to return a string representation of the Staff object
+    def work(self) -> str:
+        return f"{self.name} is working as a {self.position} in the {self.department} department."
