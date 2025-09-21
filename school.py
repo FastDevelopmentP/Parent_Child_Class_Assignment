@@ -41,7 +41,7 @@ class Student(Person):
     
 class Staff(Person):
     # Define the Staff class that inherits from Person
-    def __init__(self, name: str, age: int, country: str, position: str, deparment: str):
+    def __init__(self, name: str, age: int, country: str, position: str, department: str):
         #call the init method in the child class
         Staff.__init__(self, name, age, country)
         #set the staff specific attributes of position and department
@@ -51,3 +51,12 @@ class Staff(Person):
     # method to return a string representation of the Staff object
     def work(self) -> str:
         return f"{self.name} is working as a {self.position} in the {self.department} department."
+    
+# Step 11: Example usage of Student and Staff classes
+# Inputs
+student_1 = Student("Alice", 22, "USA", "Computer Science", 3.8)
+staff_1 = Staff("Bob", 45, "Canada", "Professor", "Mathematics")
+
+# Outputs
+print(student_1.study()) # "Alice is studying Computer Science with a GPA of 3.8."
+print(staff_1.work())    # "Bob is working as a Professor in the Mathematics department."
